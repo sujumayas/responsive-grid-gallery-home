@@ -23,9 +23,10 @@
 					<div class="transparencia"></div>
 					<!-- The image & background effects -->
 					<div class="grid-item-image" style='background-image: url("https://picsum.photos/200/300?image=<?php echo $i; ?>");'>
-					</div>
 					
-
+					</div>
+					<div class="invisible-item" style='background-image: url("https://picsum.photos/1200/800?image=<?php echo $i; ?>");display:none;'>
+					</div>
 				</div>
 
 			<?php endfor; ?>
@@ -71,6 +72,13 @@
 			margin:0;
 			padding: 0;
 			overflow: hidden;
+		}
+		body {
+			background-color:white;
+			background-repeat:none;
+			background-size:100%;
+			background-position: center center;
+			transition: background 1s linear;
 		}
 
 		/* The Grid Container have the rule for separating squares */
@@ -136,9 +144,9 @@
 		.transparencia_3+.grid-item-image{opacity: 0.3;}
 		.transparencia_2{background-color: #0897A0;opacity: 0.1;}
 		.transparencia_2+.grid-item-image{opacity: 0.2;}
-		.transparencia_1{background-color:white;}
+		.transparencia_1{background-color:transparent;}
 		.transparencia_1+.grid-item-image{opacity: 0.1;background-image:none!important;}
-		.transparencia_0{background-color:white;}
+		.transparencia_0{background-color:transparent;}
 		.transparencia_0+.grid-item-image{opacity: 0.1;background-image:none!important;}
 		
 		/* Hover effects */
@@ -336,6 +344,19 @@
 			}
 			return stringTemplate;
 		}
+
+		
+		function changeBackground(event){
+			if(event.target.classList.contains("transparencia")){
+				let image = event.target.nextElementSibling.style.backgroundImage
+				let result = image.slice(image.lastIndexOf("=")+1, -2)
+				console.log(result)
+				document.body.style.backgroundImage = `url("https://picsum.photos/1200/800?image=${result}"`
+			}
+			console.log(event.target);
+		}
+		
+		gridWrapper.addEventListener("click", changeBackground)
 
 	</script>
 </body>
