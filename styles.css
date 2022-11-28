@@ -1,0 +1,260 @@
+:root {
+    --darkblue-color: #443053;
+    --blue-color: #75538f;
+    --lightblue-color: #c087eb;
+    --red-color:#d22765;
+    --yellow-color:#f5aa68;
+    --rows: 11;
+    --columns: 23;
+    --columnStartTitle: 3;
+    --columnEndTitle: 15;
+    --columnStartSubTitle: 5;
+    --columnEndSubTitle: 13;
+    --columnStartSquare: 3;
+    --columnEndSquare: 5;
+    --rowStartSquare: 4;
+    --rowEndSquare: 6;
+    --squareVisible: block;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body,
+html,
+.hyper-container {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+    background-color: white;
+    background-repeat: none;
+    background-size: 100%;
+    background-position: center center;
+    transition: background 1s linear;
+}
+
+/* The Grid Container have the rule for separating squares */
+.grid-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 60px);
+    grid-template-rows: repeat(var(--rows), 60px);
+    grid-row-gap: 2px;
+    grid-column-gap: 2px;
+    cursor: pointer;
+}
+
+/* This is the grid that cointains only the Logo, Title and Subtitle (should be centered with JS) */
+.second-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 60px);
+    grid-template-rows: repeat(var(--rows), 60px);
+    grid-row-gap: 2px;
+    grid-column-gap: 2px;
+    pointer-events: none;
+}
+
+/* The grid item only matters because he is the container of the picture */
+.grid-item {
+    position: relative;
+}
+
+/* The grid item image is the */
+.grid-item-image {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    background-size: 100%;
+    filter: grayscale(100%);
+    z-index: 1;
+    background-position: center
+        /*background-color: var(--darkblue-color);
+                    background-blend-mode: luminosity;*/
+}
+
+/* Transparencias */
+.transparencia {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    opacity: 1;
+}
+
+.transparencia_7 {
+    background-color: var(--darkblue-color);
+    opacity: 0.8;
+}
+
+.transparencia_6 {
+    background-color: var(--blue-color);
+    opacity: 0.8;
+}
+
+.transparencia_5 {
+    background-color: var(--lightblue-color);
+    opacity: 0.8;
+}
+
+.transparencia_4 {
+    background-color: var(--lightblue-color);
+    opacity: 0.4;
+}
+
+.transparencia_4+.grid-item-image {
+    opacity: 0.4;
+}
+
+.transparencia_3 {
+    background-color: var(--lightblue-color);
+    opacity: 0.2;
+}
+
+.transparencia_3+.grid-item-image {
+    opacity: 0.3;
+}
+
+.transparencia_2 {
+    background-color: var(--lightblue-color);
+    opacity: 0.1;
+}
+
+.transparencia_2+.grid-item-image {
+    opacity: 0.2;
+}
+
+.transparencia_1 {
+    background-color: transparent;
+}
+
+.transparencia_1+.grid-item-image {
+    opacity: 0.1;
+    background-image: none !important;
+}
+
+.transparencia_0 {
+    background-color: transparent;
+}
+
+.transparencia_0+.grid-item-image {
+    opacity: 0.1;
+    background-image: none !important;
+}
+
+/* Hover effects */
+.transparencia:hover+.grid-item-image {
+    filter: none;
+    cursor: pointer;
+    background-size: 150%;
+    transition: background 2s linear;
+    opacity: 1;
+}
+
+.transparencia:hover {
+    opacity: 0;
+    cursor: pointer;
+}
+
+.transparencia+.grid-item-image:hoveer {
+    filter: none;
+    cursor: pointer;
+    background-size: 150%;
+    transition: background 2s linear;
+    opacity: 1;
+}
+
+/* Special Grid Items */
+.grid-item.square-box {
+    display: var(--squareVisible);
+    grid-column-start: var(--columnStartSquare);
+    grid-column-end: var(--columnEndSquare);
+    grid-row-start: var(--rowStartSquare);
+    grid-row-end: var(--rowEndSquare);
+    background-color: var(--yellow-color);
+}
+
+.grid-item.main-title {
+    grid-column-start: var(--columnStartTitle);
+    grid-column-end: var(--columnEndTitle);
+    grid-row-start: 6;
+    grid-row-end: 7;
+    background-color: var(--red-color);
+    background-image: none !important;
+}
+
+.grid-item.sub-title {
+    grid-column-start: var(--columnStartSubTitle);
+    grid-column-end: var(--columnEndSubTitle);
+    grid-row-start: 7;
+    grid-row-end: 8;
+    background-color: var(--red-color);
+    background-image: none !important;
+}
+
+.title,
+.subtitle {
+    font-family: Helvetica;
+    color: #ffffff;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px;
+    margin: 0;
+    height: 60px;
+}
+
+.title {
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    letter-spacing: 1px;
+    line-height: 40px;
+}
+
+.subtitle {
+    font-size: 12px;
+    font-weight: 100;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 4px;
+    line-height: 20px;
+}
+
+.square-box {
+    background-image: url("http://jesuitas-home-grid.test/logo-muestra.png");
+    background-size: 100%;
+    background-position: center center;
+}
+
+
+/*
+    
+                TODO
+                -----
+    
+                JS/CSS
+                --------
+                - Falta agregar el icono
+                - Falta revisar que funcione con el menu de avada!!
+                - Falta revisar que funcione con el header mobile. 
+                - Ojo. El titulo debe tener 2 cuadrados de alto en mobile. 
+    
+                PHP
+                ----
+                - Falta jalar los thumbnails de los posts. 
+                - Falta optimizar el php para que solo cubra los grids necesarios y no autogenere tanto html por las puras. 
+                - Falta autogenerar los links 
+                - Revisar animacion de hover. 
+    
+    
+                */
