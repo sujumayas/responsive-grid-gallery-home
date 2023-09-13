@@ -15,7 +15,7 @@
 			<!-- This just creates a big number of pictures so we are safe -->
 			<?php for($i=0; $i < 506 ; $i++): ?>
 				<?php $itemIndex = ($i % 7)+1; ?>
-				
+				<?php $photo_index = $i % 46; ?>
 				<!-- The grid item container -->
 				<div class="grid-item grid-item-<?php echo $itemIndex; ?>">
 					
@@ -23,10 +23,10 @@
 					<!-- Transparencia -->
 					<div class="transparencia"></div>
 					<!-- The image & background effects -->
-					<div class="grid-item-image" style='background-image: url("https://picsum.photos/200/300?image=<?php echo $i; ?>");'>
+					<div class="grid-item-image" style='background-image: url("images/ideogram (<?php echo $photo_index; ?>).jpeg");'>
 					
 					</div>
-					<div class="invisible-item" style='background-image: url("https://picsum.photos/1200/800?image=<?php echo $i; ?>");display:none;'>
+					<div class="invisible-item" style='background-image: url("images/ideogram (<?php echo $photo_index; ?>).jpeg");display:none;'>
 					</div>
 				</div>
 
@@ -89,8 +89,8 @@
 			left: 0;
 			z-index: 1;
 			display:grid;
-			grid-template-columns: repeat(var(--columns), 60px); 
-		  	grid-template-rows: repeat(var(--rows), 60px); 
+			grid-template-columns: repeat(var(--columns), 108px); 
+		  	grid-template-rows: repeat(var(--rows), 192px); 
 		  	grid-row-gap: 2px;
 		  	grid-column-gap: 2px;
 		  	cursor: pointer;
@@ -102,11 +102,12 @@
 			left: 0;
 			z-index: 99;
 			display:grid;
-			grid-template-columns: repeat(var(--columns), 60px); 
-		  	grid-template-rows: repeat(var(--rows), 60px); 
+			grid-template-columns: repeat(var(--columns), 54px); 
+		  	grid-template-rows: repeat(var(--rows), 86px); 
 		  	grid-row-gap: 2px;
 		  	grid-column-gap: 2px;
 		  	pointer-events:none;
+			display:none;
 		}
 
 		/* The grid item only matters because he is the container of the picture */
@@ -121,7 +122,7 @@
 			width:100%;
 			cursor: pointer;
 			background-size:100%;
-			filter:grayscale(100%);
+			/* filter:grayscale(100%);*/
 			z-index:1;
 			background-position:center
 			/*background-color: var(--darkblue-color);
@@ -134,8 +135,9 @@
 			height: 100%;
 			width:100%;
 			z-index:2;
-		  	opacity: 1;
+		  	opacity: 0;
 		}
+		/*
 		.transparencia_7{background-color: #01343A;opacity: 0.8;}
 		.transparencia_6{background-color: #056A70;opacity: 0.8;}
 		.transparencia_5{background-color: #0897A0;opacity: 0.8;}
@@ -149,12 +151,13 @@
 		.transparencia_1+.grid-item-image{opacity: 0.1;background-image:none!important;}
 		.transparencia_0{background-color:transparent;}
 		.transparencia_0+.grid-item-image{opacity: 0.1;background-image:none!important;}
-		
+		*/
 		/* Hover effects */
+		/* 
 		.transparencia:hover +.grid-item-image{filter:none;cursor: pointer;background-size:150%;transition:background 2s linear;opacity:1;}
 		.transparencia:hover {opacity:0;cursor: pointer;}
 		.transparencia+.grid-item-image:hoveer{filter:none;cursor: pointer;background-size:150%;transition:background 2s linear;opacity:1;}
-
+		*/
 		/* Special Grid Items */
 		.grid-item.square-box {
 		    display:var(--squareVisible);
@@ -210,6 +213,7 @@
 			background-size:100%;
 			background-position: center center;
 		}
+		
 		
 		
 		/*
