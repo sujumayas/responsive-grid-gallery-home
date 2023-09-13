@@ -16,7 +16,7 @@
 
             <!-- This just creates a big number of pictures so we are safe -->
             <template v-for="index in 500">
-
+                
                 <!-- The grid item container -->
                 <div class="grid-item" :class="className(index)">
 
@@ -25,11 +25,11 @@
                     <div class="transparencia"></div>
                     <!-- The image & background effects -->
                     <div class="grid-item-image"
-                        :style="{'background-image': 'url(\'https://picsum.photos/200/300?image=' + index +'\')'}">
+                        :style="{'background-image': 'url(\'images/ideogram (' + index % 46 +').jpeg\')'}">
 
                     </div>
                     <div class="invisible-item"
-                        :style="{'background-image': 'url(\'https://picsum.photos/1200/800?image=' + index +'\')'}">
+                        :style="{'background-image': 'url(\'images/ideogram (' + index % 46 +').jpeg\')'}">
                     </div>
                 </div>
 
@@ -185,8 +185,8 @@
                 if(event.target.classList.contains("transparencia")){
                     let image = event.target.nextElementSibling.style.backgroundImage
                     let result = image.slice(image.lastIndexOf("=")+1, -2)
-                    console.log(result)
-                    document.body.style.backgroundImage = `url("https://picsum.photos/1200/800?image=${result}"`
+                    result = result % 46 
+                    document.body.style.backgroundImage = `url("images/ideogram (${result}).jpeg)"`
                 }
                 console.log(event.target);
             }
